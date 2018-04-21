@@ -12,7 +12,7 @@ if ! command -v docker >/dev/null 2>&1;then
     release=$(grep '^ID=' /etc/os-release | grep -oP '(?<=ID=).+')
     version=$(grep '^VERSION_ID=' /etc/os-release | grep -oP '[0-9.]+')
     if [ $release == "ubuntu" ];then
-        if [ $version =~ 17 ];then
+        if [[ $version =~ 17 ]];then
             echo "Install docker on ubuntu 17."
             apt-get update
             apt-get install -y docker.io
