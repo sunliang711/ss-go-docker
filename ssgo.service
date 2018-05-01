@@ -14,7 +14,7 @@ After=network.target docker.service
 #ExecStop=
 
 Type=simple
-ExecStart=/usr/local/bin/manager.sh start
+ExecStart=/usr/local/bin/ssctl start
 #ExecStop=
 
 #Environment=
