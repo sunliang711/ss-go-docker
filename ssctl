@@ -35,7 +35,7 @@ exit 1
 start(){
     #解析config.json文件中的port，之后用在-p参数中
     #-v参数映射到/etc/config.json
-    ports=$(sed -n '/port_password/,/},/p' $cfg | ggrep -oP '(?<=")[0-9]+(?=":)')
+    ports=$(sed -n '/port_password/,/},/p' $cfg | grep -oP '(?<=")[0-9]+(?=":)')
     pflag=
     for port in $ports;do
         pflag="$pflag -p $port:$port"
