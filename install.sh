@@ -29,7 +29,7 @@ fi
 
 
 #soft link
-ln -sf $PWD/manager.sh /usr/local/bin
+ln -sf $PWD/ssctl /usr/local/bin
 
 #systemd service file
 cp ssgo.service /etc/systemd/system/
