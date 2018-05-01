@@ -19,6 +19,7 @@ fi
 
 usage(){
     cat<<EOF
+$(basename $0) is a shadowsocks server manager tool.
 Usage: $(basename $0) CMD
 
 CMD:
