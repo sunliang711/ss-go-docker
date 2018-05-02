@@ -13,14 +13,19 @@ echo NOthing
 }
 
 enableBBR(){
-    echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
-    echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    #echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+    #echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+    cat>/etc/sysctl.d/10-bbr.conf<<EOF
+net.core.default_qdisc=fq
+net.ipv4.tcp_congestion_control=bbr
+EOF
     sysctl -p
 }
 
 checkBBR(){
     #check bbr
     sysctl net.ipv4.tcp_available_congestion_control
+    sysctl net.ipv4.tcp_congestion_control
     lsmod | grep bbr
 }
 
