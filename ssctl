@@ -77,6 +77,9 @@ stop(){
     else
         echo "Container: $container is not running"
     fi
+    #为了保证修改配置文件后（比如增删端口号），重启服务可以增删端口映射，这里就把这个容器删掉
+    #然后重启服务的时候会根据配置文件的端口信息来映射配置文件中的当前端口号
+    docker container rm $container
 }
 rm(){
     #stop container and rm it
