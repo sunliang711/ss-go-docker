@@ -32,10 +32,16 @@ fi
 ln -sf $PWD/ssctl /usr/local/bin
 
 #systemd service file
-cp ssgo.service /etc/systemd/system/
-systemctl enable ssgo.service
-systemctl start ssgo.service
+read -p "start ssgo.service? [y/n]" st
+if [ "$st" == y ];then
+    systemctl start ssgo.service
+fi
 
+cp ssgo.service /etc/systemd/system/
+read -p "enable ssgo.service? [y/n]" en
+if [ "$en" == y ];then
+    systemctl enable ssgo.service
+fi
 
 #crontab to reboot
 item="0 0 * * * /sbin/reboot #reboot every day"
@@ -43,4 +49,7 @@ item="0 0 * * * /sbin/reboot #reboot every day"
 
 
 #enable BBR
-bash enableBBR.sh
+read -p "enable bbr? [y/n]" b
+if [ "$b" == y ];then
+    bash enableBBR.sh
+fi
