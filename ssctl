@@ -93,6 +93,9 @@ log(){
 }
 
 config(){
+    if [ ! -e $cfg ];then
+        cp shadowsocks.json.example $cfg
+    fi
     $editor $cfg
 
     #check modify time and restart if possible
